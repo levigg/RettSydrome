@@ -1,0 +1,462 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="strChooseSound">音檔</sys:String>
+    <sys:String x:Key="strRecordSound">錄音</sys:String>
+    <sys:String x:Key="strTTSSound">語音</sys:String>
+
+    <ControlTemplate x:Key="btnTemplate" TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"  TextElement.FontSize="20">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="textBoxTemplate" TargetType="{x:Type TextBox}">
+        <TextBox  Text="{Binding Path=ER_text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center"/>
+    </ControlTemplate>
+
+
+
+    <ImageBrush x:Key="img_Close" ImageSource="Images\appClose.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_Close_hover" ImageSource="Images\appClose_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_Minimize" ImageSource="Images\appMinimize.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_Minimize_hover" ImageSource="Images\appMinimize_hover.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="img_ER" ImageSource="Images\Editor\addQuestionBox\ER.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_ER_hover" ImageSource="Images\Editor\addQuestionBox\ER_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_four" ImageSource="Images\Editor\addQuestionBox\four.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_four_hover" ImageSource="Images\Editor\addQuestionBox\four_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_one" ImageSource="Images\Editor\addQuestionBox\one.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_one_hover" ImageSource="Images\Editor\addQuestionBox\one_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_questionBox" ImageSource="Images\Editor\addQuestionBox\questionBox.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_six" ImageSource="Images\Editor\addQuestionBox\six.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_six_hover" ImageSource="Images\Editor\addQuestionBox\six_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_two" ImageSource="Images\Editor\addQuestionBox\two.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_two_hover" ImageSource="Images\Editor\addQuestionBox\two_hover.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="img_add" ImageSource="Images\Editor\buttons\add.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_add_hover" ImageSource="Images\Editor\buttons\add_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_delete" ImageSource="Images\Editor\buttons\delete.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_delete_hover" ImageSource="Images\Editor\buttons\delete_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_delete1246" ImageSource="Images\Editor\buttons\delete1246.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_delete1246_hover" ImageSource="Images\Editor\buttons\delete1246_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_edit" ImageSource="Images\Editor\buttons\edit.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_edit_red" ImageSource="Images\Editor\buttons\edit_red.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_fullScreen" ImageSource="Images\Editor\buttons\fullScreen.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_fullScreen_hover" ImageSource="Images\Editor\buttons\fullScreen_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_home" ImageSource="Images\Editor\buttons\home.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_home_hover" ImageSource="Images\Editor\buttons\home_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_loadImage" ImageSource="Images\Editor\buttons\loadImage.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_loadImage_hover" ImageSource="Images\Editor\buttons\loadImage_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_loadVideo" ImageSource="Images\Editor\buttons\loadVideo.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_loadVideo_hover" ImageSource="Images\Editor\buttons\loadVideo_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_next" ImageSource="Images\Editor\buttons\next.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_next_hover" ImageSource="Images\Editor\buttons\next_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_no_sound" ImageSource="Images\Editor\buttons\no_sound.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_no_sound_hover" ImageSource="Images\Editor\buttons\no_sound_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_previous" ImageSource="Images\Editor\buttons\previous.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_previous_hover" ImageSource="Images\Editor\buttons\previous_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_sound" ImageSource="Images\Editor\buttons\sound.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_chooseOn" ImageSource="Images\Editor\buttons\chooseOn.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_chooseOff" ImageSource="Images\Editor\buttons\chooseOff.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="img_ER_add" ImageSource="Images\Editor\ER\ER_add.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_ER_add_red" ImageSource="Images\Editor\ER\ER_add_red.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_ER_close" ImageSource="Images\Editor\ER\ER_close.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_ER_close_hover" ImageSource="Images\Editor\ER\ER_close_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_ER_text" ImageSource="Images\Editor\ER\ER_text.png" Stretch="Fill"/>
+    <ImageBrush x:Key="img_ER_text_active" ImageSource="Images\Editor\ER\ER_text_active.png" Stretch="Fill"/>
+    <ImageBrush x:Key="img_ER_no_sound" ImageSource="Images\Editor\ER\ER_no_sound.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="img_recordBox_close" ImageSource="Images\Editor\recordBox\recordBox_close.png" Stretch="Uniform"/>
+
+    <BitmapImage x:Key="img_recordBg" UriSource="Images\Editor\img\recordBg.png"/>
+    <ImageBrush x:Key="img_recordIcon" ImageSource="Images\Editor\img\recordIcon.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="img_recordIcon_hover" ImageSource="Images\Editor\img\recordIcon_hover.png" Stretch="Uniform"/>
+
+    <Style x:Key="styleMinimize" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_Minimize}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_Minimize_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="styleClose" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_Close}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_Close_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+<!--addQuestionBox-->
+    <Style x:Key="style_questionBox" TargetType="{x:Type Border}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource questionBox}"/>
+    </Style>
+    <Style x:Key="style_one" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_one}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_one_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_two" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_two}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_two_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_four" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_four}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_four_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_six" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_six}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_six_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_ER" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_ER_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+<!--buttons-->
+    <Style x:Key="style_add" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_add}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_add_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_delete" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_delete}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_delete_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_delete1246" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_delete1246}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Width" Value="60"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_delete1246_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_edit" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_edit}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_edit_red}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_edit_1" TargetType="{x:Type Button}" BasedOn="{StaticResource style_edit}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+    </Style>
+    <Style x:Key="style_edit_2" TargetType="{x:Type Button}" BasedOn="{StaticResource style_edit}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+    </Style>
+    <Style x:Key="style_edit_4" TargetType="{x:Type Button}" BasedOn="{StaticResource style_edit}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+    </Style>
+    <Style x:Key="style_edit_6" TargetType="{x:Type Button}" BasedOn="{StaticResource style_edit}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+    </Style>
+    
+    <Style x:Key="style_fullScreen" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_fullScreen}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_fullScreen_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_chooseOff" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_chooseOff}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_chooseOn}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_home" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_home}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_home_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_loadImage" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_loadImage}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_loadImage_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_loadImage_1" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadImage}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadImage_2" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadImage}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadImage_4" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadImage}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadImage_6" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadImage}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    
+    <Style x:Key="style_loadVideo" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_loadVideo}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_loadVideo_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_loadVideo_1" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadVideo}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadVideo_2" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadVideo}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadVideo_4" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadVideo}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    <Style x:Key="style_loadVideo_6" TargetType="{x:Type Button}" BasedOn="{StaticResource style_loadVideo}">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="20,0,20,0"></Setter>
+    </Style>
+    
+    <Style x:Key="style_next" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_next}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_next_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_no_sound" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_no_sound}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Width" Value="60"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_no_sound_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_have_sound" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_sound}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Width" Value="60"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+    </Style>
+    <Style x:Key="style_previous" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_previous}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_previous_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+<!--ER-->
+    <Style x:Key="style_ER_add" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER_add}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_ER_add_red}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_ER_close" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER_close}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_ER_close_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_ER_text" TargetType="{x:Type Border}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER_text}"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="40"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_ER_text_active}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_have_text" TargetType="{x:Type Border}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER_text_active}"/>
+    </Style>
+    <Style x:Key="style_ER_textBox" TargetType="{x:Type TextBox}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Template" Value="{StaticResource textBoxTemplate}"/>
+    </Style>
+    <Style x:Key="style_ER_no_sound" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_ER_no_sound}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_no_sound_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_ER_dragRect" TargetType="{x:Type Rectangle}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Stroke" Value="Gray"/>
+        <Setter Property="StrokeThickness" Value="0.4"/>
+        <Setter Property="StrokeDashArray" Value="20,10"/>
+    </Style>
+
+    
+<!--recordBox-->
+    <Style x:Key="style_recordBox_close" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_recordBox_close}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_ER_close_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="style_recordBg" TargetType="{x:Type Image}" >
+        <Setter Property="Source" Value="{StaticResource img_recordBg}"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+    </Style>
+    <Style x:Key="style_recordBg_1" TargetType="{x:Type Image}" BasedOn="{StaticResource style_recordBg}">
+        <Setter Property="Width" Value="140"/>
+    </Style>
+    <Style x:Key="style_recordBg_2" TargetType="{x:Type Image}" BasedOn="{StaticResource style_recordBg}">
+        <Setter Property="Width" Value="100"/>
+    </Style>
+    <Style x:Key="style_recordBg_4" TargetType="{x:Type Image}" BasedOn="{StaticResource style_recordBg}">
+        <Setter Property="Width" Value="100"/>
+    </Style>
+    <Style x:Key="style_recordBg_6" TargetType="{x:Type Image}" BasedOn="{StaticResource style_recordBg}">
+        <Setter Property="Width" Value="100"/>
+    </Style>
+    <Style x:Key="style_recordIcon" TargetType="{x:Type Button}" >
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource img_recordIcon}"/>
+        <Setter Property="Template" Value="{StaticResource btnTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background"  Value="{StaticResource img_recordIcon_hover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <!--<Style x:Key="style_hover_border" TargetType="{x:Type Border}" >
+        <Setter Property="Background" Value="#E9004C"/>
+    </Style>-->
+    <Style x:Key="style_hover_border" TargetType="{x:Type Rectangle}" >
+        <Setter Property="Stroke" Value="#E95412"/>
+        <Setter Property="StrokeThickness" Value="20"/>
+        <Setter Property="StrokeDashArray" Value="0.9,0.6"/>
+    </Style>
+</ResourceDictionary>

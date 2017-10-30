@@ -1,0 +1,249 @@
+﻿<Window x:Class="RettSydrome.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"  Height="600" Width="800" Loaded="Window_Loaded" WindowState="Maximized" KeyDown="Window_KeyDown" AllowsTransparency="True" WindowStyle="None" >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MainWindow_resource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Home/homeBg1.jpg" />
+    </Window.Background>
+    <Grid>
+        <TextBlock Margin="0,0,30,20" Text="1.1.2.22" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Black"/>
+        <Border Name="windowPanel" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="0,40,50,0">
+            <Border.Background>
+                <ImageBrush ImageSource="Images/appPanelBg.png" Stretch="Uniform"/>
+            </Border.Background>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" Margin="10">
+                <Button x:Name="minimize_button" Click="minimize_button_Click" Style="{DynamicResource styleMinimize}" BorderThickness="0" Width="44.33" Height="29" Margin="0,0,0,0"/>
+                <Button x:Name="close_button" Click="close_button_Click" Style="{DynamicResource styleClose}" BorderThickness="0" Width="39" Height="29" Margin="0,0,0,0"/>
+            </StackPanel>
+        </Border>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,430,0,0">
+            <Button Name="new_subject_button" Content="{DynamicResource strHomeBtn1}" Style="{DynamicResource styleHomeBtn1}" BorderThickness="0" Margin="0,0,5,0" Width="250" Height="50" Click="new_subject_button_Click"/>
+            <Button Name="open_subject_button" Content="{DynamicResource strHomeBtn2}" Style="{DynamicResource styleHomeBtn2}" BorderThickness="0" Margin="5,0,0,0" Width="250" Height="50" Click="open_subject_button_Click"/>
+        </StackPanel>
+
+        <Grid x:Name="new_subject_box" Visibility="Collapsed">
+            <Border MinWidth="320" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,300">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/newSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="30,17,0,0" Text="請輸入主題名稱" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <TextBox Margin="0,35,0,15"  MinWidth="250" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" x:Name="InputTextBox" BorderBrush="#E95412" Foreground="#3E3A39"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="new_subject_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleOrangeBtn1}" Click="new_subject_Yes_Click"/>
+                        <Button x:Name="new_subject_No" Content="{DynamicResource strNo}"  Style="{DynamicResource styleOrangeBtn2}" Click="new_subject_No_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="open_subject_box" Visibility="Collapsed" Margin="0,0,0,140">
+            <Border MinWidth="440" Height="382" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/openSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,20,30,0" Text="選擇主題" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <ListView Name="subject_ListView" Height="230" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Transparent" SelectionChanged="subject_ListView_SelectionChanged" Loaded="subject_ListView_Loaded"  Margin="20,35,20,5">
+                        <ListView.Resources>
+                            <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,0"/>
+                            </ItemsPanelTemplate>
+
+                            <!-- Template that is used upon selection of an Area -->
+                            <ControlTemplate x:Key="SelectedTemplate" TargetType="ListViewItem">
+                                <StackPanel Orientation="Vertical">
+                                    <Border Background="#E8D5D3">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="Images/Home/homeBtn2_3_hover.png" Stretch="Uniform" Margin="10,0" />
+                                            <ItemsControl  ItemsSource="{Binding}" ItemsPanel="{StaticResource ItemsPanelTemplate1}" FontSize="25" Foreground="#3E3A39" HorizontalContentAlignment="Right" Margin="0,5"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <Separator Width="380"/>
+                                </StackPanel>
+                            </ControlTemplate>
+
+
+
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <!-- Base Template that is replaced upon selection -->
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <StackPanel Orientation="Vertical">
+                                                <Border Background="Transparent">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="10,0" />
+                                                        <ItemsControl  ItemsSource="{Binding}" ItemsPanel="{StaticResource ItemsPanelTemplate1}" FontSize="25"  Foreground="#727171" HorizontalContentAlignment="Right" Margin="0,5"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Separator Width="380"/>
+                                            </StackPanel>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsSelected" Value="true" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Template" Value="{StaticResource SelectedTemplate}" />
+                                    </MultiTrigger>
+                                </Style.Triggers>
+                            </Style>
+
+                        </ListView.Resources>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="open_subject_Yes" Width="66" Height="35" Content="{DynamicResource strYes}" Style="{DynamicResource styleOpenSubjectBtn1}" Click="open_subject_Yes_Click"/>
+                        <Button x:Name="open_subject_In" Width="66" Height="35" Content="{DynamicResource strIn}" Style="{DynamicResource styleOpenSubjectBtn2}" Click="open_subject_In_Click"/>
+                        <Button x:Name="open_subject_Edit" Width="66" Height="35" Content="{DynamicResource strEdit}" Style="{DynamicResource styleOpenSubjectBtn1}" Click="open_subject_Edit_Click"/>
+                        <Button x:Name="open_subject_Out" Width="66" Height="35" Content="{DynamicResource strOut}" Style="{DynamicResource styleOpenSubjectBtn2}" Click="open_subject_Out_Click"/>
+                        <Button x:Name="open_subject_Delete" Width="66" Height="35" Content="{DynamicResource strDelete}"  Style="{DynamicResource styleOpenSubjectBtn1}" Click="open_subject_Delete_Click"/>
+                        <Button x:Name="open_subject_No" Width="66" Height="35" Content="{DynamicResource strNo}" Style="{DynamicResource styleOpenSubjectBtn2}" Click="open_subject_No_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="edit_subject_box" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/editSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,17,0,0" Text="請輸入主題名稱" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,28,17,10" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3_hover.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBox x:Name="editTextBox"   MinWidth="300" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" BorderBrush="#E95412" Foreground="#3E3A39"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="edit_subject_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleOrangeBtn1}" Click="edit_subject_Yes_Click"/>
+                        <Button x:Name="edit_subject_No"  Content="{DynamicResource strNo}"  Style="{DynamicResource styleOrangeBtn2}" Click="edit_subject_No_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="delete_subject_box" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="刪除主題" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="確認刪除此主題?"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="delete_subject_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="delete_subject_Yes_Click"/>
+                        <Button x:Name="delete_subject_No"  Content="{DynamicResource strNo}"  Style="{DynamicResource styleGreenBtn2}" Click="delete_subject_No_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="message_box1" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="提示" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="請建立新主題"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="message_box1_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="message_box1_Yes_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="message_box2" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="提示" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="主題名稱不能為空白"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="message_box2_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="message_box2_Yes_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="message_box4" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="提示" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="該主題已經存在"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="message_box4_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="message_box4_Yes_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="message_box3" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="提示" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="請選擇一個主題"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="message_box3_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="message_box3_Yes_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="close_app" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.4"/>
+            <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border.Background>
+                    <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Margin="0,16,2,0" Text="關閉程式" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                    <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                        <TextBlock    Text="確認關閉1246?"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="close_app_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="close_app_Yes_Click"/>
+                        <Button x:Name="close_app_No"  Content="{DynamicResource strNo}"  Style="{DynamicResource styleGreenBtn2}" Click="close_app_No_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

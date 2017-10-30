@@ -1,0 +1,885 @@
+﻿<Window x:Class="RettSydrome.EditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Video" Height="600" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowState="Maximized" WindowStyle="None" KeyDown="Window_KeyDown" Closed="Window_Closed">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MainWindow_resource.xaml" />
+                <ResourceDictionary Source="EditorWindow_resource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Background>
+        <SolidColorBrush Color="White"></SolidColorBrush>
+    </Window.Background>
+
+    <Grid x:Name="grid_all">
+        <Grid Name="grid_shaddles">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Name="Shaddles_1" Grid.Column="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Image  Grid.Row="1" Source="Images/Editor/block/block_1_shaddle.png" Stretch="Uniform"></Image>
+            </Grid>
+            <Grid Name="Shaddles_2" Grid.Column="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="1" Source="Images/Editor/block/block_2_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_2_shaddle.png" Stretch="Uniform"></Image>
+            </Grid>
+            <Grid Name="Shaddles_4" Grid.Column="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5.5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2.5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="1" Source="Images/Editor/block/block_4_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="0" Grid.Row="3" Source="Images/Editor/block/block_4_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_4_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="1" Grid.Row="3" Source="Images/Editor/block/block_4_shaddle.png" Stretch="Uniform"></Image>
+            </Grid>
+            <Grid Name="Shaddles_6" Grid.Column="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5.5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2.5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="1" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="0" Grid.Row="3" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="1" Grid.Row="3" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="2" Grid.Row="1" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+                <Image Grid.Column="2" Grid.Row="3" Source="Images/Editor/block/block_6_shaddle.png" Stretch="Uniform"></Image>
+            </Grid>
+        </Grid>
+
+        <Grid Name="grid_blocks">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="sideBar" Grid.Row="1" Source="Images/Editor/img/sideBar.png" Stretch="Uniform" Width="65" Margin="20,0,0,0" />
+
+            <Grid x:Name="blocks" Grid.Column="1" Grid.Row="1">
+                <Grid x:Name="grid_one" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_1_bg.png" Stretch="Fill" ></Image>
+                    <Rectangle x:Name="hover_border_1_1" Grid.Column="1" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Grid Name="grid_one_1" Grid.Column="1"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="110*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="70*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_1_1" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_1_1"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_1_1" Style="{DynamicResource style_loadVideo_1}"></Button>
+                                <Button x:Name="loadImage_button_1_1" Style="{DynamicResource style_loadImage_1}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_1_1" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_1_1" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_1_1" Style="{DynamicResource style_edit_1}"></Button>
+                            <StackPanel x:Name="choose_sound_box_1_1" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grid_two" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="60*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_2_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_2_1" Grid.Column="1" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="3" Grid.Row="1" Source="Images/Editor/block/block_2_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_2_2" Grid.Column="3" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+
+                    <Grid Name="grid_two_1" Grid.Column="1"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="80*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1"  Background="White">
+                            <MediaElement x:Name="video_2_1" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_2_1"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_2_1" Style="{DynamicResource style_loadVideo_2}"></Button>
+                                <Button x:Name="loadImage_button_2_1" Style="{DynamicResource style_loadImage_2}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_2_1" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_2_1" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_2_1" Style="{DynamicResource style_edit_2}"></Button>
+                            <StackPanel x:Name="choose_sound_box_2_1" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Name="grid_two_2" Grid.Column="3"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="80*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1"  Background="White">
+                            <MediaElement x:Name="video_2_2" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_2_2"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_2_2" Style="{DynamicResource style_loadVideo_2}"></Button>
+                                <Button x:Name="loadImage_button_2_2" Style="{DynamicResource style_loadImage_2}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_2_2" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_2_2" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_2_2" Style="{DynamicResource style_edit_2}"></Button>
+                            <StackPanel x:Name="choose_sound_box_2_2" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grid_four" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_4_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_4_1" Grid.Column="1" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="1" Grid.Row="3" Source="Images/Editor/block/block_4_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_4_3" Grid.Column="1" Grid.Row="3" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="3" Grid.Row="1" Source="Images/Editor/block/block_4_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_4_2" Grid.Column="3" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="3" Grid.Row="3" Source="Images/Editor/block/block_4_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_4_4" Grid.Column="3" Grid.Row="3" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+
+                    <Grid Name="grid_four_1" Grid.Column="1"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1"  Background="White">
+                            <MediaElement x:Name="video_4_1" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_4_1"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_4_1" Style="{DynamicResource style_loadVideo_4}"></Button>
+                                <Button x:Name="loadImage_button_4_1" Style="{DynamicResource style_loadImage_4}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_4_1" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_4_1" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_4_1" Style="{DynamicResource style_edit_4}"></Button>
+                            <StackPanel x:Name="choose_sound_box_4_1" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_four_2" Grid.Column="3"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1"  Background="White">
+                            <MediaElement x:Name="video_4_2" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_4_2"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_4_2" Style="{DynamicResource style_loadVideo_4}"></Button>
+                                <Button x:Name="loadImage_button_4_2" Style="{DynamicResource style_loadImage_4}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_4_2" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_4_2" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_4_2" Style="{DynamicResource style_edit_4}"></Button>
+                            <StackPanel x:Name="choose_sound_box_4_2" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_four_3" Grid.Column="1"  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1"  Background="White">
+                            <MediaElement x:Name="video_4_3" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_4_3"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_4_3" Style="{DynamicResource style_loadVideo_4}"></Button>
+                                <Button x:Name="loadImage_button_4_3" Style="{DynamicResource style_loadImage_4}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_4_3" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_4_3" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_4_3" Style="{DynamicResource style_edit_4}"></Button>
+                            <StackPanel x:Name="choose_sound_box_4_3" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_four_4" Grid.Column="3"  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_4_4" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_4_4"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_4_4" Style="{DynamicResource style_loadVideo_4}"></Button>
+                                <Button x:Name="loadImage_button_4_4" Style="{DynamicResource style_loadImage_4}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_4_4" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_4_4" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_4_4" Style="{DynamicResource style_edit_4}"></Button>
+                            <StackPanel x:Name="choose_sound_box_4_4" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grid_six" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_1" Grid.Column="1" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="3" Grid.Row="1" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_2" Grid.Column="3" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="5" Grid.Row="1" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_3" Grid.Column="5" Grid.Row="1" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="1" Grid.Row="3" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_4" Grid.Column="1" Grid.Row="3" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="3" Grid.Row="3" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_5" Grid.Column="3" Grid.Row="3" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+                    <Image Grid.Column="5" Grid.Row="3" Source="Images/Editor/block/block_6_bg.png" Stretch="Fill"></Image>
+                    <Rectangle x:Name="hover_border_6_6" Grid.Column="5" Grid.Row="3" Style="{DynamicResource style_hover_border}" Visibility="Collapsed"/>
+
+                    <Grid Name="grid_six_1" Grid.Column="1"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_1" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_1"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_1" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_1" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_1" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_1" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_1" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_1" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_six_2" Grid.Column="3"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_2" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_2"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_2" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_2" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_2" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_2" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_2" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_2" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_six_3" Grid.Column="5"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_3" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_3"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_3" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_3" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_3" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_3" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_3" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_3" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_six_4" Grid.Column="1"  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_4" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_4"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_4" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_4" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_4" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_4" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_4" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_4" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_six_5" Grid.Column="3"  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_5" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_5"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_5" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_5" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_5" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_5" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_5" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_5" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Name="grid_six_6" Grid.Column="5"  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <MediaElement x:Name="video_6_6" LoadedBehavior="Manual"/>
+                            <Image x:Name="image_6_6"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button x:Name="loadVideo_button_6_6" Style="{DynamicResource style_loadVideo_6}"></Button>
+                                <Button x:Name="loadImage_button_6_6" Style="{DynamicResource style_loadImage_6}"></Button>
+                            </StackPanel>
+                            <Button x:Name="sound_button_6_6" Style="{DynamicResource style_no_sound}"></Button>
+                            <Button x:Name="delete1246_button_6_6" Style="{DynamicResource style_delete1246}"></Button>
+                            <Button x:Name="edit_button_6_6" Style="{DynamicResource style_edit_6}"></Button>
+                            <StackPanel x:Name="choose_sound_box_6_6" VerticalAlignment="Center">
+                                <Image Style="{DynamicResource style_recordBg_1}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <Button Content="{DynamicResource strChooseSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="choose_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strRecordSound}"  Style="{DynamicResource styleOrangeBtn2}" Click="record_sound_button_Click"/>
+                                    <Button Content="{DynamicResource strTTSSound}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_sound_button_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grid_ER" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Source="Images/Editor/block/block_1_bg.png" Stretch="Fill"></Image>
+                    
+                    <Grid Name="grid_ER_1" Grid.Column="1"  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="100*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+                            <Image x:Name="image_ER" Grid.Column="1"  Grid.Row="1"/>
+                            <InkCanvas x:Name="inkCanvas_ER" Grid.ColumnSpan="3"  Grid.RowSpan="3" EditingMode="Select" SelectionMoving="inkCanvas_ER_SelectionMoving" SelectionResizing="inkCanvas_ER_SelectionResizing" SelectionChanging="inkCanvas_ER_SelectionChanging" SelectionMoved="inkCanvas_ER_SelectionMoved" SelectionResized="inkCanvas_ER_SelectionResized" SelectionChanged="inkCanvas_ER_SelectionChanged" Background="Transparent"/>
+                            <Button x:Name="loadImage_button_ER" Grid.Column="1"  Grid.Row="1" Style="{DynamicResource style_loadImage_1}" Margin="0"></Button>
+                            <Button x:Name="edit_button_ER" Style="{DynamicResource style_edit_1}"></Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="base_UI">
+            
+            <Grid Name="grid_bar">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="13*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                
+                <Image x:Name="topBar" Source="Images/Editor/img/topBar.jpg"  Stretch="Fill" VerticalAlignment="Top" />
+                <Image x:Name="bottomBar" Source="Images/Editor/img/bottomBar.png"  Grid.Row="2" Stretch="Fill" VerticalAlignment="Bottom" />
+            </Grid>
+
+            <Grid x:Name="base_buttons">
+                <Grid Name="grid_fullScreen_button">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="fullScreen_button" Grid.Column="1" Grid.Row="2" Style="{DynamicResource style_fullScreen}" Click="fullScreen_button_Click" Width="70" Height="70"  ></Button>
+                </Grid>
+                <Grid Name="grid_chooseOff_button">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="chooseOff_button" Grid.Column="2" Grid.Row="2" Style="{DynamicResource style_chooseOff}" Click="chooseOff_button_Click" Width="70" Height="70" Visibility="Collapsed" ></Button>
+                </Grid>
+                <Grid Name="grid_buttons">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Name="subject_UI" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,20">
+                        <Image Source="Images/Editor/img/labelBg.png" Stretch="Uniform"  Width="400"/>
+                        <Label x:Name="subjectLabel" Foreground="#3E3A39" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35"></Label>
+                    </Grid>
+                    <StackPanel Name="question_UI" Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <Button x:Name="previous" Style="{DynamicResource style_previous}" Width="50" Height="50" Click="previous_Click" Margin="0,0,20,0"></Button>
+                        <Label x:Name="questionLabel" FontSize="25" Foreground="#E95412" VerticalAlignment="Center"></Label>
+                        <Button x:Name="next" Style="{DynamicResource style_next}" Width="50" Height="50" Click="next_Click" Margin="20,0,0,0"></Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="edit_UI">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="0.85*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="add_ER" Grid.Column="0" Grid.Row="2">
+                    <TextBlock Text="新增" Foreground="#8FB727" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Text="感應範圍" Foreground="#8FB727" HorizontalAlignment="Center" FontSize="15"></TextBlock>
+                    <Button  Style="{DynamicResource style_ER_add}"  Height="70" Width="70" Click="add_ER_Click"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="delete_button" Style="{DynamicResource style_delete}" Grid.Column="2" Grid.Row="3" Width="70" Height="70" Click="Delete_Question_Click" ></Button>
+                <Border Name="windowPanel" Grid.Column="2" Width="100" Height="60">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/appPanelBg.png" Stretch="Uniform" />
+                    </Border.Background>
+                    <StackPanel  Orientation="Horizontal" Margin="10">
+                        <Button x:Name="minimize_button" Click="minimize_button_Click" Style="{DynamicResource styleMinimize}" Width="44.33" Height="29" />
+                        <Button x:Name="close_button" Click="close_button_Click" Style="{DynamicResource styleClose}"  Width="39" Height="29"/>
+                    </StackPanel>
+                </Border>
+                <Button x:Name="add_button" Style="{DynamicResource style_add}" Grid.Row="3" Width="70" Height="70" Click="Add_Question_Click"></Button>
+                <Button x:Name="back" Style="{DynamicResource style_home}" Click="back_Click" Width="70" Height="70" ></Button>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grid_box" >
+            <Grid x:Name="new_question_box" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="677" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Editor/addQuestionBox/questionBox.png"></ImageBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="205,0,0,0">
+                            <Button x:Name="new_question_1" Style="{DynamicResource style_one}" Width="80" Height="80" Margin="2"  Click="new_question_1_Click"/>
+                            <Button x:Name="new_question_2" Style="{DynamicResource style_two}" Width="80" Height="80"  Margin="2" Click="new_question_2_Click"/>
+                            <Button x:Name="new_question_4" Style="{DynamicResource style_four}" Width="80" Height="80" Margin="2" Click="new_question_4_Click"/>
+                            <Button x:Name="new_question_6" Style="{DynamicResource style_six}" Width="80" Height="80" Margin="2"  Click="new_question_6_Click"/>
+                            <Button x:Name="new_question_ER" Style="{DynamicResource style_ER}" Width="80" Height="80" Margin="2"  Click="new_question_ER_Click"/>
+                        </StackPanel>
+                        <Button x:Name="new_question_no" Style="{DynamicResource style_delete1246}" Click="new_question_no_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="40" Margin="0,3,13,0"></Button>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+            <Grid x:Name="record_box" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="331" Height="140" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Editor/recordBox/recordBox.png"></ImageBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="play_button" Template="{StaticResource btnTemplate}" Click="play_button_Click" Width="80" Height="80" Margin="0,0,10,0">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/Editor/recordBox/recordPlayBtn_active.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="record_button" Template="{StaticResource btnTemplate}" Click="record_button_Click" Width="80" Height="80" Margin="10,0">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/Editor/recordBox/recordStartBtn.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="record_stop_button" Template="{StaticResource btnTemplate}" Click="record_stop_button_Click" Width="80" Height="80" Margin="10,0" Visibility="Collapsed">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/Editor/recordBox/recordStopBtn.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="finish_button" Template="{StaticResource btnTemplate}" Content="完成" Foreground="#727171" FontSize="20" Click="finish_button_Click" Width="80" Height="80" Margin="12,0,0,0">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Images/Editor/recordBox/recordFinishBtn_active.png"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                        <TextBlock x:Name="record_stopwatch" Text="{Binding StringData}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="32,3,0,0">
+                        </TextBlock>
+                        <Button x:Name="close_record_box_button" Style="{DynamicResource style_recordBox_close}" Click="close_record_box_button_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="0,3,3,0"></Button>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="TTS_box" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="320" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Home/newSubjectBox.png" Stretch="Uniform"/>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Margin="34,23,0,0" Text="輸入轉換成語音的文字" FontSize="23" HorizontalAlignment="Center" Foreground="White"/>
+                        <TextBox Margin="0,35,0,15"  MinWidth="250" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" x:Name="TTStextBox" BorderBrush="#E95412" Foreground="#3E3A39"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="TTS_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleOrangeBtn1}" Click="TTS_Yes_Click"/>
+                            <Button x:Name="TTS_No" Content="{DynamicResource strNo}"  Style="{DynamicResource styleOrangeBtn2}" Click="TTS_No_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid x:Name="message_box2" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Margin="0,16,2,0" Text="提示" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                        <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                            <TextBlock    Text="主題名稱不能為空白"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="message_box2_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="message_box2_Yes_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="delete_box" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Margin="0,16,2,0" Text="刪除" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                        <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                            <TextBlock    Text="確認刪除此頁?"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="delete_question_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="delete_question_Yes_Click"/>
+                            <Button x:Name="delete_question_No"  Content="{DynamicResource strNo}"  Style="{DynamicResource styleGreenBtn2}" Click="delete_question_No_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid x:Name="close_app" Visibility="Collapsed">
+                <Grid Background="Black" Opacity="0.4"/>
+                <Border MinWidth="400" Height="177" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Images/Home/deleteSubjectBox.png" Stretch="Uniform"/>
+                    </Border.Background>
+                    <StackPanel>
+                        <TextBlock Margin="0,16,2,0" Text="關閉程式" FontSize="30" HorizontalAlignment="Center" Foreground="White"/>
+                        <StackPanel Margin="17,25,17,8" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="Images/Home/homeBtn2_3.png" Stretch="Uniform" Margin="5,0" />
+                            <TextBlock    Text="確認關閉1246?"  HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#8FC31F"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="close_app_Yes" Content="{DynamicResource strYes}"  Style="{DynamicResource styleGreenBtn1}" Click="close_app_Yes_Click"/>
+                            <Button x:Name="close_app_No"  Content="{DynamicResource strNo}"  Style="{DynamicResource styleGreenBtn2}" Click="close_app_No_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+</Window>
